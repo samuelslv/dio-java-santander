@@ -1,4 +1,5 @@
 package src;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,20 +9,19 @@ public class CarrinhoDeCompras {
 
     public CarrinhoDeCompras() {
         this.listaCompras = new ArrayList<>();
-
     }
 
     // Adiciona uma nova Item à lista com a descrição fornecida.
-    public void adicionarItem(String descricao) {
-        listaCompras.add(new Item(descricao));
+    public void adicionarItem(String nome, double preco, int quantidade) {
+        listaCompras.add(new Item(nome, preco, quantidade));
     }
 
     // Remove uma Item da lista com base em sua descrição.
-    public void removerItem(String descricao) {
+    public void removerItem(String nome) {
         List<Item> ItemsParaRemover = new ArrayList<>();
 
         for (Item t : listaCompras) {
-            if (t.getDescricao().equalsIgnoreCase(descricao)) {
+            if (t.getNome().equalsIgnoreCase(nome)) {
                 ItemsParaRemover.add(t);
             }
         }
@@ -29,36 +29,42 @@ public class CarrinhoDeCompras {
     }
 
     // Retorna o número total de Items na lista.
-    public int obterNumeroTotalItems() {
-        return listaCompras.size();
+    public double calcularValorToral() {
+        double valor = 0;
+        for (Item i : listaCompras) {
+            valor = valor + (i.getQuantidade() * i.getPreco());
+        }
+
+        return valor;
 
     }
 
     // Retorna uma lista contendo a descrição de todas as Items na lista.
-    public void obterDescricoesItems() {
+    public void exibirItens() {
         System.out.println(listaCompras);
-        /*for (Item Item : listaCompras) {
-            System.out.println(Item.getDescricao());
-        }*/
+        /*
+         * for (Item Item : listaCompras) {
+         * System.out.println(Item.getDescricao());
+         * }
+         */
     }
 
     public static void main(String[] args) {
         CarrinhoDeCompras Item = new CarrinhoDeCompras();
 
-        System.out.println("----- Tamamho da lista de Items: " + Item.obterNumeroTotalItems());
-        Item.adicionarItem("Item 1");
-        Item.adicionarItem("Item 2");
-        Item.adicionarItem("Item 3");
-        Item.adicionarItem("Item 4");
-        Item.adicionarItem("Item 5");
-        Item.adicionarItem("Item 6");
-        System.out.println("----- Tamamho da lista de Items: " + Item.obterNumeroTotalItems());
-        System.out.println("----- Items: ");
-        Item.obterDescricoesItems();
-        System.out.println("----- Revomer Item 4");
-        Item.removerItem("Item 4");
-        System.out.println("----- Items: ");
-        Item.obterDescricoesItems();
+        Item.adicionarItem("12 Café", 3, 1);
+        Item.adicionarItem("5 Leite em pó", 2, 1);
+        Item.adicionarItem("5Playstation 5", 5000, 1);
+        Item.adicionarItem("Dual sense 5", 500, 1);
+        Item.adicionarItem("Puzzle", 32, 1);
+        Item.adicionarItem("IPhone", 4, 1);
+        System.out.println("----- Lita de items: ");
+        Item.exibirItens();
+        System.out.println("----- Valor total: " + Item.calcularValorToral());
+        System.out.println("----- Revomer Puzzle");
+        Item.removerItem("Puzzle");
+        System.out.println("----- Lita de items: ");
+        Item.exibirItens();
 
     }
 }
