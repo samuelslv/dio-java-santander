@@ -1,18 +1,26 @@
-## Getting Started
+# List Interface
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Ordenação em List
 
-## Folder Structure
+### 1. Ordenação de Pessoas
 
-The workspace contains two folders by default, where:
+<p>Crie uma classe chamada "OrdenacaoPessoas" que possui uma lista de objetos do tipo "Pessoa" como atributo. Cada pessoa possui atributos como nome, idade e altura. Implemente os seguintes métodos:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `adicionarPessoa(String nome, int idade, double altura)`: Adiciona uma pessoa à lista.
+- `ordenarPorIdade()`: Ordena as pessoas da lista por idade usando a interface Comparable.
+- `ordenarPorAltura()`: Ordena as pessoas da lista por altura usando um Comparator personalizado.
+</p>
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### 2. Ordenação de Números
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+<p>Crie uma classe chamada "OrdenacaoNumeros" que possui uma lista de números inteiros como atributo. Implemente os seguintes métodos:
 
-## Dependency Management
+- `adicionarNumero(int numero)`: Adiciona um número à lista.
+- `ordenarAscendente()`: Ordena os números da lista em ordem ascendente usando a interface Comparable e a class Collections.
+- `ordenarDescendente()`: Ordena os números da lista em ordem descendente usando um Comparable e a class Collections.
+</p>
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+### Dúvidas e Suporte
+
+Caso você tenha alguma dúvida, problema ou sugestão, fique à vontade para abrir uma issue no repositório. Espero conseguir te ajudar! (:
