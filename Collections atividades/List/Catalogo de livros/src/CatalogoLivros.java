@@ -7,7 +7,6 @@ public class CatalogoLivros {
 
     public CatalogoLivros() {
         this.catalogoLivros = new ArrayList<>();
-
     }
 
     // Adiciona um livro ao catálogo.
@@ -16,16 +15,18 @@ public class CatalogoLivros {
     }
 
     // Pesquisa livros por autor e retorna uma lista com os livros encontrados.
-    public void pesquisarPorAutor(String autor) {
+    public List<Livro> pesquisarPorAutor(String autor) {
         List<Livro> livrosAutor = new ArrayList<>();
 
-        for (Livro t : catalogoLivros) {
-            if (t.getAutor().equalsIgnoreCase(autor)) {
-                livrosAutor.add(t);
+        if (!catalogoLivros.isEmpty()) {
+            for (Livro t : catalogoLivros) {
+                if (t.getAutor().equalsIgnoreCase(autor)) {
+                    livrosAutor.add(t);
+                }
             }
+            System.out.println("Livros de " + autor);
         }
-        System.out.println("Livros de " + autor);
-        System.out.println(livrosAutor);
+        return livrosAutor;
     }
 
     // Pesquisa livros publicados em um determinado intervalo de anos e retorna uma
@@ -33,32 +34,33 @@ public class CatalogoLivros {
     public List<Livro> pesquisarPorIntervaloAnos(int anoInicial, int anoFinal) {
         List<Livro> livrosPeriodo = new ArrayList<>();
 
-        for (Livro t : catalogoLivros) {
-            // String resultado = nota >=7 ? "Aprovado" : "Reprovado";
-            if (t.getAnoPublicacao() >= anoInicial && t.getAnoPublicacao() <= anoFinal) {
-                livrosPeriodo.add(t);
+        if (!catalogoLivros.isEmpty()) {
+            for (Livro t : catalogoLivros) {
+                // String resultado = nota >=7 ? "Aprovado" : "Reprovado";
+                if (t.getAnoPublicacao() >= anoInicial && t.getAnoPublicacao() <= anoFinal) {
+                    livrosPeriodo.add(t);
+                }
             }
         }
         System.out.println("Livros do perido de " + anoInicial + " até " + anoFinal + ":");
-        System.out.println(livrosPeriodo);
-        return catalogoLivros;
+        return livrosPeriodo;
     }
 
     // Pesquisa livros por título e retorna o primeiro livro encontrado.
-    public void pesquisarPorTitulo(String titulo) {
+    public Livro pesquisarPorTitulo(String titulo) {
         // List<Livro> livroTitulo = new ArrayList<>();
-        System.out.println("Pesquisando pelo " + titulo);
-        for (Livro t : catalogoLivros) {
-
-            if (t.getTitulo().equals(titulo)) {
-                System.out.println(t.getTitulo());
-                return;
+        Livro livroTitulo = null;
+        System.out.println("Pesquisando pelo titulo: " + titulo);
+        if (!catalogoLivros.isEmpty()) {
+            for (Livro t : catalogoLivros) {
+                if (t.getTitulo().equalsIgnoreCase(titulo)) {
+                    livroTitulo = t;
+                    break;
+                }
             }
         }
+        return livroTitulo;
 
-        System.out.println("Nao foi encontrado");
-        // System.out.println("Livros de "+ titulo);
-        // System.out.println(livroTitulo);
     }
 
     public static void main(String[] args) {
@@ -70,8 +72,12 @@ public class CatalogoLivros {
         livros.adicionarLivro("Livro Su", "Sauzana", 2020);
         livros.adicionarLivro("Livro S3", "Samuel", 2004);
         livros.adicionarLivro("Livro M", "Moises", 1998);
-        livros.pesquisarPorAutor("Bete");
-        livros.pesquisarPorIntervaloAnos(1990, 2004);
-        livros.pesquisarPorTitulo("Livro Sua");
+
+        System.out.println("----- Pesquisando autor -----");
+        System.out.print(livros.pesquisarPorAutor("Bete"));
+        System.out.println("\n\n----- Pesquisando no intervalo -----");
+        System.out.print(livros.pesquisarPorIntervaloAnos(1990, 2004));
+        System.out.println("\n\n----- Pesquisando por titulo -----");
+        System.out.print(livros.pesquisarPorTitulo("Livro Su"));
     }
 }
