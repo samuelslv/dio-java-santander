@@ -3,19 +3,19 @@ import java.util.Set;
 
 public class AgendaContatos {
 
-    private Set<Contato> contatoList;
+    private Set<Contato> contatoSet;
 
     public AgendaContatos() {
-        this.contatoList = new HashSet<>();
+        this.contatoSet = new HashSet<>();
     }
 
     public void adicionarContato(String nome, int numero) {
-        contatoList.add(new Contato(nome, numero));
+        contatoSet.add(new Contato(nome, numero));
     }
 
     public void exibirContatos() {
-        if (!contatoList.isEmpty()) {
-            System.out.println(contatoList);
+        if (!contatoSet.isEmpty()) {
+            System.out.println(contatoSet);
         } else {
             System.out.println("Erro");
         }
@@ -23,9 +23,9 @@ public class AgendaContatos {
 
     public Set<Contato> pesquisarPorNome(String nome) {
         Set<Contato> mostrarLista = new HashSet<>();
-        if (!contatoList.isEmpty()) {
-            for (Contato contato : contatoList) {
-                if (contato.getNome().equalsIgnoreCase(nome)) {
+        if (!contatoSet.isEmpty()) {
+            for (Contato contato : contatoSet) {
+                if (contato.getNome().startsWith(nome)) {
                     mostrarLista.add(contato);
                 }
             }
@@ -36,8 +36,8 @@ public class AgendaContatos {
     }
 
     public void atualizarNumeroContato(String nome, int novoNumero) {
-        if (!contatoList.isEmpty()) {
-            for (Contato contato : contatoList) {
+        if (!contatoSet.isEmpty()) {
+            for (Contato contato : contatoSet) {
                 if (contato.getNome().equalsIgnoreCase(nome)) {
                     contato.setNumero(novoNumero);
                 }
