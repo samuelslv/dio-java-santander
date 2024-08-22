@@ -3,17 +3,17 @@ import java.util.Set;
 
 public class ConjuntoPalavrasUnicas {
 
-    private Set<String> palavrasSet;
+    private Set<String> palavrasUnicasSet;
 
     public ConjuntoPalavrasUnicas() {
-        this.palavrasSet = new HashSet<>();
+        this.palavrasUnicasSet = new HashSet<>();
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((palavrasSet == null) ? 0 : palavrasSet.hashCode());
+        result = prime * result + ((palavrasUnicasSet == null) ? 0 : palavrasUnicasSet.hashCode());
         return result;
     }
 
@@ -26,40 +26,40 @@ public class ConjuntoPalavrasUnicas {
         if (getClass() != obj.getClass())
             return false;
         ConjuntoPalavrasUnicas other = (ConjuntoPalavrasUnicas) obj;
-        if (palavrasSet == null) {
-            if (other.palavrasSet != null)
+        if (palavrasUnicasSet == null) {
+            if (other.palavrasUnicasSet != null)
                 return false;
-        } else if (!palavrasSet.equals(other.palavrasSet))
+        } else if (!palavrasUnicasSet.equals(other.palavrasUnicasSet))
             return false;
         return true;
     }
 
     public void adicionarPalavra(String palavra) {
-        palavrasSet.add(palavra);
+        palavrasUnicasSet.add(palavra);
     }
 
     public void removerPalavra(String palavra) {
-        String palavraRemover = null;
-        for (String p : palavrasSet) {
-            if (p.equalsIgnoreCase(palavra)) {
-                palavraRemover = palavra;
-                break;
+        if (!palavrasUnicasSet.isEmpty()) {
+            if (palavrasUnicasSet.contains(palavra)) {
+                palavrasUnicasSet.remove(palavra);
+            } else {
+                System.out.println("Palavra não encontrada no conjunto!");
             }
+        } else {
+            System.out.println("O conjunto está vazio!");
         }
-        palavrasSet.remove(palavraRemover);
     }
 
-    public String verificarPalavra(String palavra) {
-        for (String p : palavrasSet) {
-            if (p.equals(palavra)) {
-                return "Palavra existe";
-            }
-        }
-        return "Palavra nao existe";
+    public boolean verificarPalavra(String palavra) {
+        return (boolean) palavrasUnicasSet.contains(palavra);
     }
 
     public void exibirPalavras() {
-        System.out.println(palavrasSet);
+        if (!palavrasUnicasSet.isEmpty()) {
+            System.out.println(palavrasUnicasSet);
+        } else {
+            System.out.println("O conjunto está vazio!");
+        }
     }
 
     public static void main(String[] args) {
@@ -77,6 +77,6 @@ public class ConjuntoPalavrasUnicas {
         lista.exibirPalavras();
         lista.removerPalavra("Remover");
         lista.exibirPalavras();
-        System.out.println(lista.verificarPalavra("Suzana"));
+        System.out.println("A linguagem 'Bete' está no conjunto? " + lista.verificarPalavra("Bete"));
     }
 }
