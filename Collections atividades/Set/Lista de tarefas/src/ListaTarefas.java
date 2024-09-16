@@ -18,14 +18,22 @@ public class ListaTarefas {
     }
 
     public void removerTarefa(String descricao) {
-        Tarefa convidadoRemover = null;
-        for (Tarefa c : tarefasSet) {
-            if (c.getDescricao() == descricao) {
-                convidadoRemover = c;
-                break;
+        Tarefa tarefaParaRemover = null;
+        if (!tarefasSet.isEmpty()) {
+          for (Tarefa t : tarefasSet) {
+            if (t.getDescricao().equalsIgnoreCase(descricao)) {
+              tarefaParaRemover = t;
+              break;
             }
+          }
+          tarefasSet.remove(tarefaParaRemover);
+        } else {
+          System.out.println("O conjunto está vazio");
         }
-        tarefasSet.remove(convidadoRemover);
+    
+        if(tarefaParaRemover == null) {
+          System.out.println("Tarefa não encontrada!");
+        }
     }
 
     public int contarConvidados() {
@@ -33,7 +41,11 @@ public class ListaTarefas {
     }
 
     public void exibirTarefas() {
-        System.out.println(tarefasSet);
+        if(!tarefasSet.isEmpty()) {
+            System.out.println(tarefasSet);
+          } else {
+            System.out.println("Tarefa não encontrada!");
+          }
     }
 
     public int contarTarefas() {
