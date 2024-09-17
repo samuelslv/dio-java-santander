@@ -79,7 +79,6 @@ public class Produto implements Comparable<Produto> {
 
 }
 
-
 class ComparatorPorPreco implements Comparator<Produto> {
 
     @Override
@@ -87,5 +86,4 @@ class ComparatorPorPreco implements Comparator<Produto> {
         return Double.compare(p1.getPreco(), p2.getPreco());
     }
 
-    
 }
