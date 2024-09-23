@@ -18,8 +18,7 @@ public class FunctionExample {
 
     // Usar a função para dobrar todos os números no Stream e armazená-los em outra lista
     List<Integer> numerosDobrados = numeros.stream()
-        .map(n -> n * 2)
-        .toList();
+        .map(n -> n * 2).toList();
 
     // Imprimir a lista de números dobrados
     numerosDobrados.forEach(System.out::println);
