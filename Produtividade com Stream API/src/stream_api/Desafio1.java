@@ -2,7 +2,6 @@ package stream_api;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 /* Desafio 1 - Mostre a lista na ordem numérica:
 Crie um programa que utilize a Stream API para ordenar
