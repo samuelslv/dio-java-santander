@@ -1,0 +1,2 @@
+criar projeto maven via linha de comado (CMD):
+ESTAR NA PASTA QUE VAI SER CRIADA >> mvn archetype:generate -DgroupId=NOMEdoPACOTE -DartifactId=NOMEdoPROJETO -Darchetype=maven-archetype-quickstart(TEMPLATE DA INTERNET) -DinteractiveMode=false
